@@ -38,12 +38,12 @@ public class AssignmentFiveOne extends Application {
     //static double finalMark;
     @Override
     public void start(Stage primaryStage) {
-       input = new Label("Input Information Here");
-      quiz = new Label("Quiz Grade:  ");
-       courseCode = new Label("Course Code: ");
-       finalGrade = new Label("Final Grade: ");
-       assignment = new Label("assignment grade: ");
-       gradeInfo = new Label("View Grade Info: ");
+       input = new Label("Input Info in Decimal Form.");
+       quiz = new Label("IMDB rating:  ");
+       courseCode = new Label("Movie Name: ");
+       finalGrade = new Label("Rotten Tomatoes: ");
+       assignment = new Label("Fan Dango: ");
+       gradeInfo = new Label("View Movie Information: ");
       
        quizInput = new TextField();
        finalInput = new TextField();
@@ -129,9 +129,9 @@ public class AssignmentFiveOne extends Application {
           // double cCode = Double.parseDouble(courseInput.getText());
             double aGrade= Double.parseDouble(assignmentInput.getText());
             finalMark = qGrade + fGrade + aGrade;
-            output.println(course +",quiz," +qGrade);
-            output.println(course + ",final," +fGrade);
-            output.println(course+",assignment,"+aGrade);
+            output.println(course +",imdb," +qGrade);
+            output.println(course + ",Rotten Tomatoes," +fGrade);
+            output.println(course+",Fan Dango,"+aGrade);
             finalMark = qGrade+fGrade+aGrade;
             
             if(!(courseSelection.getItems().contains(course))){
