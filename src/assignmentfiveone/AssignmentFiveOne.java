@@ -23,7 +23,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
+import java.text.DecimalFormat;
 /**
  *
  * @author rickyarora
@@ -46,6 +46,8 @@ public class AssignmentFiveOne extends Application {
        FDRating = new Label("Fan Dango: ");
        movieInfo = new Label("View Movie Information: ");
       
+       // Decemial format
+       
        IMDBInput = new TextField();
        RTInput = new TextField();
        movieInput = new TextField();
@@ -139,7 +141,7 @@ public class AssignmentFiveOne extends Application {
         PrintWriter output;
         
         try {
-            FileWriter fw= new FileWriter("records.txt", true);
+            FileWriter fw= new FileWriter("movieDatabase.txt", true);
             //BufferedWriter bw = new BufferedWriter(fw);
             output = new PrintWriter(fw);
             
@@ -156,7 +158,7 @@ public class AssignmentFiveOne extends Application {
             
             if(!(movieSelection.getItems().contains(movie))){
                 movieSelection.getItems().add(movie);
-            }
+            } 
             
             
             
@@ -177,7 +179,7 @@ public class AssignmentFiveOne extends Application {
         BufferedReader input;
         
         try{
-            FileReader f = new FileReader("records.txt");
+            FileReader f = new FileReader("movieDatabase.txt");
             input = new BufferedReader(f);
             calculation.setText(" ");  // NEW LINE
             String s = input.readLine();
@@ -186,14 +188,15 @@ public class AssignmentFiveOne extends Application {
                 String [] data = s.split(",");
                 if(data[0].equals(curCourse)){
                     calculation.appendText(data[0] + "\t"+ data[1]+"\t" +data[2]+ "\n"); 
-                  //  System.out.println(data[0] + " " + data[1] + "" + data[2]);
+                    System.out.println(data[0] + " " + data[1] + "" + data[2]);
                   totalRating += Double.parseDouble(data[2]);
                 }
                 s = input.readLine();
             }
             //There should only be 3 data at a time.
             totalRating = totalRating/3;
-            calculation.appendText("\nAverage Rating is: " + totalRating);
+            DecimalFormat df = new DecimalFormat(".##"); 
+            calculation.appendText("\nAverage Rating is: " +  df.format(totalRating));
                 
 
             
