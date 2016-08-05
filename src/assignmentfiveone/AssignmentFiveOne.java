@@ -60,6 +60,8 @@ public class AssignmentFiveOne extends Application {
       Button save = new Button("Save");
       //Delete the data
       Button delete = new Button("Delete");
+      // Exit the program
+      Button exit = new Button("Exit");
       
       addNew.setOnAction(new EventHandler<ActionEvent>() {
         @Override 
@@ -84,6 +86,13 @@ public class AssignmentFiveOne extends Application {
         
     });
       
+      exit.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent e) {
+          System.exit(0);
+      }
+    });
+      
       
       GridPane topLayout = new GridPane();
       
@@ -105,6 +114,7 @@ public class AssignmentFiveOne extends Application {
       bottomLayout.add(movieInfo,2,0);
       bottomLayout.add(movieSelection, 1,1);
       bottomLayout.add(calculation, 2,1);
+      bottomLayout.add(exit, 3,0);
       
       BorderPane bp = new BorderPane();
       
