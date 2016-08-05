@@ -30,40 +30,50 @@ import javafx.stage.Stage;
  */
 public class AssignmentFiveOne extends Application {
     static Label input;
-    static Label quiz, courseCode,finalGrade,assignment,gradeInfo;
-    static TextField quizInput, finalInput, courseInput, assignmentInput;
+    static Label IMDBRating, movie,RTRating,FDRating,movieInfo;
+    static TextField IMDBInput, RTInput, movieInput, FDInput;
     static TextArea calculation;
-    static ComboBox courseSelection;
-    static double finalMark;
+    static ComboBox movieSelection;
+    static ComboBox movieCategory;
+    static double finalRating;
     //static double finalMark;
     @Override
     public void start(Stage primaryStage) {
-       input = new Label("Input Info in Decimal Form.");
-       quiz = new Label("IMDB rating:  ");
-       courseCode = new Label("Movie Name: ");
-       finalGrade = new Label("Rotten Tomatoes: ");
-       assignment = new Label("Fan Dango: ");
-       gradeInfo = new Label("View Movie Information: ");
+       input = new Label("Input Info in Decimal Form and out of 10.");
+       IMDBRating = new Label("IMDB rating:  ");
+       movie = new Label("Movie Name: ");
+       RTRating = new Label("Rotten Tomatoes: ");
+       FDRating = new Label("Fan Dango: ");
+       movieInfo = new Label("View Movie Information: ");
       
-       quizInput = new TextField();
-       finalInput = new TextField();
-       courseInput = new TextField();
-       assignmentInput = new TextField();      
+       IMDBInput = new TextField();
+       RTInput = new TextField();
+       movieInput = new TextField();
+       FDInput = new TextField();      
       
        calculation = new TextArea();
+      //This is the main button to add new movies
+      Button addNew = new Button("Add New");
+      //This will edit existing data using CREATE, i think
+      Button edit = new Button("Edit");
+      //Save Edited info
+      Button save = new Button("Save");
+      //Delete the data
+      Button delete = new Button("Delete");
       
-      Button submit = new Button("Submit");
-      
-      submit.setOnAction(new EventHandler<ActionEvent>() {
+      addNew.setOnAction(new EventHandler<ActionEvent>() {
         @Override 
         public void handle(ActionEvent e){
             write();
       }
         
     });
-      courseSelection = new ComboBox();
+      //ComboBox that shows the movie info
+      movieSelection = new ComboBox();
+      //ComboBox that places the movies into categories
+      movieCategory = new ComboBox();
 
-      courseSelection.setOnAction(new EventHandler<ActionEvent>() {
+      movieSelection.setOnAction(new EventHandler<ActionEvent>() {
         @Override 
         public void handle(ActionEvent e){
             //calculation.setText(" ");
@@ -81,19 +91,19 @@ public class AssignmentFiveOne extends Application {
       topLayout.setVgap(20);
       
       topLayout.add(input, 2,0);
-      topLayout.add(courseCode, 0, 1);
-      topLayout.add(courseInput,1,1);
-      topLayout.add(quiz,2,1);
-      topLayout.add(quizInput,3,1);
-      topLayout.add(assignment,0,2);
-      topLayout.add(assignmentInput,1,2);
-      topLayout.add(finalGrade,2,2);
-      topLayout.add(finalInput,3,2);
-      topLayout.add(submit,2,4);
+      topLayout.add(movie, 0, 1);
+      topLayout.add(movieInput,1,1);
+      topLayout.add(IMDBRating,2,1);
+      topLayout.add(IMDBInput,3,1);
+      topLayout.add(FDRating,0,2);
+      topLayout.add(FDInput,1,2);
+      topLayout.add(RTRating,2,2);
+      topLayout.add(RTInput,3,2);
+      topLayout.add(addNew,2,4);
       
       GridPane bottomLayout = new GridPane();
-      bottomLayout.add(gradeInfo,2,0);
-      bottomLayout.add(courseSelection, 1,1);
+      bottomLayout.add(movieInfo,2,0);
+      bottomLayout.add(movieSelection, 1,1);
       bottomLayout.add(calculation, 2,1);
       
       BorderPane bp = new BorderPane();
@@ -123,19 +133,19 @@ public class AssignmentFiveOne extends Application {
             //BufferedWriter bw = new BufferedWriter(fw);
             output = new PrintWriter(fw);
             
-            String course = courseInput.getText();
-            double qGrade = Double.parseDouble(quizInput.getText());
-            double fGrade = Double.parseDouble(finalInput.getText());
+            String movie = movieInput.getText();
+            double imdbRate = Double.parseDouble(IMDBInput.getText());
+            double rtRate = Double.parseDouble(RTInput.getText());
           // double cCode = Double.parseDouble(courseInput.getText());
-            double aGrade= Double.parseDouble(assignmentInput.getText());
-            finalMark = qGrade + fGrade + aGrade;
-            output.println(course +",imdb," +qGrade);
-            output.println(course + ",Rotten Tomatoes," +fGrade);
-            output.println(course+",Fan Dango,"+aGrade);
-            finalMark = qGrade+fGrade+aGrade;
+            double fdRate= Double.parseDouble(FDInput.getText());
+            finalRating = imdbRate + rtRate + fdRate;
+            output.println(movie +",imdb," +imdbRate);
+            output.println(movie + ",Rotten Tomatoes," +rtRate);
+            output.println(movie+",Fan Dango,"+fdRate);
+            finalRating = imdbRate+rtRate+fdRate;
             
-            if(!(courseSelection.getItems().contains(course))){
-                courseSelection.getItems().add(course);
+            if(!(movieSelection.getItems().contains(movie))){
+                movieSelection.getItems().add(movie);
             }
             
             
@@ -150,8 +160,8 @@ public class AssignmentFiveOne extends Application {
     
     public static void read(){
         String curCourse = "";
-        if(courseSelection.getSelectionModel().getSelectedItem()!=null){
-        curCourse = courseSelection.getSelectionModel().getSelectedItem().toString();
+        if(movieSelection.getSelectionModel().getSelectedItem()!=null){
+        curCourse = movieSelection.getSelectionModel().getSelectedItem().toString();
         }
         
         BufferedReader input;
@@ -161,17 +171,19 @@ public class AssignmentFiveOne extends Application {
             input = new BufferedReader(f);
             calculation.setText(" ");  // NEW LINE
             String s = input.readLine();
-            double totalMark = 0;
+            double totalRating = 0;
             while(s!=null){
                 String [] data = s.split(",");
                 if(data[0].equals(curCourse)){
                     calculation.appendText(data[0] + "\t"+ data[1]+"\t" +data[2]+ "\n"); 
                   //  System.out.println(data[0] + " " + data[1] + "" + data[2]);
-                  totalMark += Double.parseDouble(data[2]);
+                  totalRating += Double.parseDouble(data[2]);
                 }
                 s = input.readLine();
             }
-            calculation.appendText("\nFinal mark is: " + totalMark);
+            //There should only be 3 data at a time.
+            totalRating = totalRating/3;
+            calculation.appendText("\nAverage Rating is: " + totalRating);
                 
 
             
