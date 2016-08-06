@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,6 +25,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 /**
  *
  * @author rickyarora
@@ -146,6 +148,10 @@ public class AssignmentFiveOne extends Application {
             output = new PrintWriter(fw);
             
             String movie = movieInput.getText();
+            if((movieSelection.getItems().contains(movie))) {
+               // JOptionPane.showMessageDialog(null, "Movie already Exist", JOptionPane.ERROR_MESSAGE)
+            }
+            else {
             double imdbRate = Double.parseDouble(IMDBInput.getText());
             double rtRate = Double.parseDouble(RTInput.getText());
           // double cCode = Double.parseDouble(courseInput.getText());
@@ -163,7 +169,9 @@ public class AssignmentFiveOne extends Application {
             
             
             
+            
             output.close();
+            }
         }
         catch (Exception e) {
             System.out.println();
@@ -208,5 +216,3 @@ public class AssignmentFiveOne extends Application {
        /// courseSelection.getSelectionModel().clearSelection();   
     }
 }
-
-    
