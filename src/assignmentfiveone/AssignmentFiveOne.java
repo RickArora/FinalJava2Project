@@ -26,6 +26,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 /**
  *
  * @author rickyarora
@@ -38,6 +39,7 @@ public class AssignmentFiveOne extends Application {
     static ComboBox movieSelection;
     static ComboBox movieCategory;
     static double finalRating;
+    static ArrayList <String> a1 = new <String> ArrayList();
     //static double finalMark;
     @Override
     public void start(Stage primaryStage) {
@@ -48,7 +50,7 @@ public class AssignmentFiveOne extends Application {
        FDRating = new Label("Fan Dango: ");
        movieInfo = new Label("View Movie Information: ");
       
-       // Decemial format
+       // Decimal format
        
        IMDBInput = new TextField();
        RTInput = new TextField();
@@ -66,6 +68,9 @@ public class AssignmentFiveOne extends Application {
       Button delete = new Button("Delete");
       // Exit the program
       Button exit = new Button("Exit");
+      
+        String s=getClass().getResource("Style.css").toExternalForm();
+        
       
       addNew.setOnAction(new EventHandler<ActionEvent>() {
         @Override 
@@ -118,15 +123,16 @@ public class AssignmentFiveOne extends Application {
       bottomLayout.add(movieInfo,2,0);
       bottomLayout.add(movieSelection, 1,1);
       bottomLayout.add(calculation, 2,1);
-      bottomLayout.add(exit, 3,0);
+      bottomLayout.add(exit, 4,1);
       
       BorderPane bp = new BorderPane();
       
       bp.setTop(topLayout);
       bp.setBottom(bottomLayout);
-      Scene s = new Scene(bp, 700, 400);
+      Scene scene = new Scene(bp, 700, 400);
       
-      primaryStage.setScene(s);
+      primaryStage.setScene(scene);
+      scene.getStylesheets().add(s);
       primaryStage.show();
       
     }
@@ -149,7 +155,7 @@ public class AssignmentFiveOne extends Application {
             
             String movie = movieInput.getText();
             if((movieSelection.getItems().contains(movie))) {
-               // JOptionPane.showMessageDialog(null, "Movie already Exist", JOptionPane.ERROR_MESSAGE)
+              JOptionPane.showMessageDialog(null, "Movie already Exist");
             }
             else {
             double imdbRate = Double.parseDouble(IMDBInput.getText());
@@ -197,6 +203,8 @@ public class AssignmentFiveOne extends Application {
                 if(data[0].equals(curCourse)){
                     calculation.appendText(data[0] + "\t"+ data[1]+"\t" +data[2]+ "\n"); 
                     System.out.println(data[0] + " " + data[1] + "" + data[2]);
+                    String x = data[0] + " " + data[1] + "" + data[2];
+                    a1.add(x);
                   totalRating += Double.parseDouble(data[2]);
                 }
                 s = input.readLine();
@@ -211,7 +219,6 @@ public class AssignmentFiveOne extends Application {
         }
         catch(Exception e){
             System.out.println("Error is: "+ e);
-            
         }
        /// courseSelection.getSelectionModel().clearSelection();   
     }
