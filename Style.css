@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 28, 2016, 3:36:38 PM
+    Author     : rickyarora
+*/
+
+.root{
+    -fx-background-image: url("https://i.ytimg.com/vi/5znji1uGNIs/maxresdefault.jpg");
+    -fx-background-repeat: stretch; 
+    -fx-background-size: 900 500;
+    -fx-background-position: center center;
+
+}
+
+.label{
+    -fx-font-size: 20px; 
+    -fx-text-fill: whitee;
+    -fx-stroke: black;
+    -fx-stroke-width: 0.5;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+.outline.label .text {
+    -fx-text-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 0.5;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+.combo-box
+ {
+  -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+  -fx-text-fill: white;
+  -fx-min-width: 150;
+  -fx-min-height: 30;
+
+ }
+.combo-box-popup .list-view
+ {
+   -fx-background-color: -fx-box-border, -fx-control-inner-background;
+   -fx-background-insets: 0, 1;
+   -fx-effect: dropshadow( three-pass-box , rgba(192,192,192,0.3) , 8, 0.0 , 0 , 0 );
+ }
+ .combo-box-popup .list-view .list-cell:hover {
+    -fx-text-fill: blue;
+}
+.combo-box .cell:selected {
+    -fx-text-fill: white;
+}
+.combo-box-popup .list-view .list-cell
+ {
+-fx-background-color: #ececec;
+-fx-text-fill: #9a9a9a;
+-fx-font-family: Oxygen Light;
+ }
