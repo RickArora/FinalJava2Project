@@ -8,4 +8,118 @@ and open the template in the editor.
     Author     : rickyarora
 */
 
+.root{
+    -fx-background-image: url("http://www.pptbackgrounds.org/uploads/film-movies-movie-making-minimalism-creative-backgrounds-wallpapers.jpg");
+    -fx-background-repeat: stretch; 
+    -fx-background-size: 900 500;
+    -fx-background-position: center center;
 
+}
+.btnoutline1.button {
+    -fx-text-alignment: center;
+}
+.btnoutline2.button {
+    -fx-text-alignment: center;
+}
+.btnoutline3.button {
+    -fx-text-alignment: center;
+}
+.btnoutline4.button {
+    -fx-text-alignment: center;
+}
+.btnoutline5.button {
+    -fx-text-alignment: center;
+}
+
+.label{
+    -fx-font-size: 20px; 
+    -fx-text-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 0.5;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+.outline.label .text {
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-font-size: 25px;
+    -fx-text-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+
+.outline2.label .text {
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+.outline3.label .text {
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+.outline4.label .text {
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+.outline5.label .text {
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+.outline6.label .text {
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-font-size: 25px;
+    -fx-text-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
+
+
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+.combo-box
+ {
+  -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+  -fx-text-fill: white;
+  -fx-min-width: 250;
+  -fx-min-height: 30;
+
+ }
+.combo-box-popup .list-view
+ {
+   -fx-background-color: -fx-box-border, -fx-control-inner-background;
+   -fx-background-insets: 0, 1;
+   -fx-effect: dropshadow( three-pass-box , rgba(192,192,192,0.3) , 8, 0.0 , 0 , 0 );
+ }
+ .combo-box-popup .list-view .list-cell:hover {
+    -fx-text-fill: blue;
+}
+.combo-box .cell:selected {
+    -fx-text-fill: white;
+}
+.combo-box-popup .list-view .list-cell
+ {
+-fx-background-color: #ececec;
+-fx-text-fill: #9a9a9a;
+-fx-font-family: Oxygen Light;
+ }
